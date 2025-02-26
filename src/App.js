@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import EmotionForm from "./EmotionForm";
+import EmotionList from "./EmotionList";
+import "./App.css";
 
 function App() {
+  const [emotions, setEmotions] = useState([]);
+
+  useEffect(() => {
+    const savedEmotions = JSON.parse(localStorage.getItem("emotions")) || [];
+    setEmotions(savedEmotions);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("emotions", JSON.stringify(emotions));
+  }, [emotions]);
+
+  const addEmotion = (emotion) => {
+    setEmotions([...emotions, emotion]);
+  };
+
+  const deleteEmotion = (id) => {
+    setEmotions(emotions.filter((emotion) => emotion.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>Эмоциялар күнделігі</h1>
+      <EmotionForm onAdd={addEmotion} />
+      <EmotionList emotions={emotions} onDelete={deleteEmotion} />
     </div>
   );
 }

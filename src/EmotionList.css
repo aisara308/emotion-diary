@@ -1,0 +1,38 @@
+.emotion-list {
+    margin-top: 20px;
+    width: 350px;
+  }
+  
+  .emotion-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .emoji {
+    font-size: 2rem;
+    margin-right: 10px;
+  }
+  
+  .text {
+    flex-grow: 1;
+  }
+  
+  .delete-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .empty-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #777;
+  }
+  
